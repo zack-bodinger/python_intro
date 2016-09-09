@@ -1,0 +1,85 @@
+# measure some strings and playing with operators
+words = ['cat', 'window', 'defenestrate']
+for w in words:
+	if len(words) < 10:
+		if len(w) > 3:
+			words.insert(0, words[2])
+#the above makes a repeating list
+
+a = ['Mary', 'had', 'a', 'little', 'lamb']
+for i in range(len(a)):
+	print i, a[i]
+	
+# above enumerates a list 
+
+for n in range (2,10):
+	for x in range(2, n):
+		if n % x == 0:
+			print n, 'equals', x, '*', n/x
+			break
+	else:	
+		# Loop fell through without finding a factor
+		print n, 'is a prime number'
+		
+for num in range(2,10):
+	if num % 2 == 0:
+		print "Found an even number", num
+		continue
+	print "Found a number", num
+	
+def fib(n):    # write Fibonacci series up to n
+     """Print a Fibonacci series up to n."""
+     a, b = 0, 1
+     while a < n:
+         print a,
+         a, b = b, a+b
+
+ # Now call the function we just defined:
+ fib(2000)
+0 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 1597
+
+def fib2(n): # return Fibonacci series up to n
+     """Return a list containing the Fibonacci series up to n."""
+     result = []
+     a, b = 0, 1
+     while a < n:
+         result.append(a)    # see below
+         a, b = b, a+b
+     return result
+
+f100 = fib2(100)    # call it
+f100                # write the result
+[0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89]
+	
+	
+def ask_ok(prompt, retries=4, complaint='Yes or no, please!'):
+    while True:
+        ok = raw_input(prompt)
+        if ok in ('y', 'ye', 'yes'):
+            return True
+        if ok in ('n', 'no', 'nop', 'nope'):
+            return False
+        retries = retries - 1
+        if retries < 0:
+            raise IOError('refusenik user')
+        print complaint
+
+def pizza(day, *toppings, **sponsors):
+	print "--Hello good sir, do you want some pizza?"
+	print "--Well, my good man, that depends, what day is it?"
+	print "--Don't you know? Today is", day
+	print "--Oh well then I'll need to know the specials of the day"
+	print "--But of course, today we are offering the following specials:"
+	test = sorted(sponsors.keys())
+	a = 0
+	for kw in test:
+		if a < 1:
+			print "--First we have some", toppings[a], "pizza, sponsored by", sponsors[kw]
+		else:
+			print "--Next we have some", toppings[a], "pizza, sponsored by", sponsors[kw]
+		a=a+1
+	print "--Oh lovely, the last one sounds great!"
+	print "--Wonderful, so you'll have the", toppings[-1], "pizza, sponsored by", sponsors[kw], "?"
+	print "--Yes please!"
+	
+pizza("wednesday", "pepperoni","ham","pineapple", b="bubbles",c="apples",a="cats")
